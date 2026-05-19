@@ -1,0 +1,6 @@
+{
+  "name": "Lumina Gallery",
+  "description": "A premium, Netflix-inspired responsive image gallery with macOS-style aesthetics and dynamic folder support.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
