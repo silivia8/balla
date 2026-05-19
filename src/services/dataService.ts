@@ -1,15 +1,17 @@
 import { Folder, ImageMetadata } from '../types';
 
+const dataBaseUrl = `${import.meta.env.BASE_URL}data/`;
+
 export async function fetchFolders(): Promise<Folder[]> {
   try {
-    const response = await fetch('/data/index.txt');
+    const response = await fetch(`${dataBaseUrl}index.txt`);
     if (!response.ok) throw new Error('Failed to fetch folder index');
     const text = await response.text();
     const folderFiles = text.split('\n').map(f => f.trim()).filter(f => f && f.endsWith('.txt'));
 
     const folderPromises = folderFiles.map(async (file): Promise<Folder | null> => {
       const name = file.replace('.txt', '');
-      const folderResponse = await fetch(`/data/${file}`);
+      const folderResponse = await fetch(`${dataBaseUrl}${file}`);
       if (!folderResponse.ok) return null;
       
       const folderText = await folderResponse.text();
